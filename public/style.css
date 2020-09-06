@@ -51,7 +51,8 @@ nav {
 
 /* VIDEO LEFT SIDE */
 video {
-  min-height: 42vh;
+  min-height: 250px;
+  max-height: 42vh;
   max-width: 50vh;
   min-width: 300px;
   object-fit: cover;
