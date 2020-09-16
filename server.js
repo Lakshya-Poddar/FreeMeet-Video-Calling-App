@@ -5,7 +5,16 @@ const { v4: uuidv4 } = require("uuid");
 const io = require("socket.io")(server);
 const { ExpressPeerServer } = require("peer");
 const peerServer = ExpressPeerServer(server, { debug: true });
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("build"));
+  app.use((req, res, next) => {
+    if (req.header("x-forwarded-proto") !== "https") {
+      res.redirect(`https://${req.header("host")}${req.url}`);
+    } else {
+      next();
+    }
+  });
+}
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use("/peerjs", peerServer);
