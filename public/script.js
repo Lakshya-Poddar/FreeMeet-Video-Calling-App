@@ -6,7 +6,7 @@ var peers = {};
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
-  port: "443",
+  port: "3000",
 });
 
 let myVideoStream;
@@ -69,7 +69,7 @@ $("html").keydown((e) => {
 });
 socket.on("createMessage", (message, userId) => {
   $("ul").append(
-    `<li class="message"><b>User ${userId.substring(
+    `<li class="message"><b style="color:#dcdcdc">User ${userId.substring(
       0,
       7
     )}</b><br/><p class="message-content">${message}<p></li>`
