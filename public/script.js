@@ -3,6 +3,7 @@ const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 var peers = {};
+var thisUserId;
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
@@ -20,11 +21,15 @@ navigator.mediaDevices
     addVideoStream(myVideo, stream);
 
     peer.on("call", (call) => {
+      peers[call.peer] = call;
       call.answer(stream);
       const video = document.createElement("video");
       call.on("stream", (userVideoStream) => {
-        // apna video stream bhejna hai
+        // Sending my video
         addVideoStream(video, userVideoStream);
+      });
+      call.on("close", () => {
+        video.remove();
       });
     });
     socket.on("user-connected", (userId) => {
@@ -33,17 +38,19 @@ navigator.mediaDevices
   });
 
 socket.on("user-disconnected", (userId) => {
-  if (peers[userId]) peers[userId].close();
+  if (peers[userId]) {
+    console.log("peers[userId]", peers[userId]);
+    peers[userId].close();
+  }
 });
 peer.on("open", (id) => {
   socket.emit("join-room", ROOM_ID, id);
 });
-
 const connectToNewUser = (userId, stream) => {
   const call = peer.call(userId, stream);
   const video = document.createElement("video");
   call.on("stream", (userVideoStream) => {
-    // new user ka vedio stream
+    // Receiving new users video
     addVideoStream(video, userVideoStream);
   });
   call.on("close", () => {
@@ -126,5 +133,4 @@ const setPlayVideo = () => {
 };
 const exit = () => {
   socket.emit("userexit");
-  // console.log('exit')
 };
