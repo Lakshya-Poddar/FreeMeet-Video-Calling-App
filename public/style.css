@@ -52,18 +52,17 @@ nav {
 /* VIDEO LEFT SIDE */
 video {
   height: 250px;
-  width: 350px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 2px;
-  border: 1px solid 3f3f3f;
-  margin: 2px;
+  border: 3px solid #3f3f3f;
+  margin: 10px;
 }
 #video-grid {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: row wrap;
-  min-height: 100vh;
+  min-height: 85vh;
 }
 
 /* RIGHT CHAT WINDOW SIDE */

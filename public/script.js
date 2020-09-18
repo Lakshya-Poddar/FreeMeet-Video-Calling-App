@@ -7,7 +7,7 @@ var thisUserId;
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
-  port: "443",
+  port: "3000",
 });
 
 let myVideoStream;
