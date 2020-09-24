@@ -25,7 +25,7 @@ navigator.mediaDevices
       call.answer(stream);
       const video = document.createElement("video");
       call.on("stream", (userVideoStream) => {
-        // Sending my video
+        //my video
         addVideoStream(video, userVideoStream);
       });
       call.on("close", () => {
@@ -50,7 +50,7 @@ const connectToNewUser = (userId, stream) => {
   const call = peer.call(userId, stream);
   const video = document.createElement("video");
   call.on("stream", (userVideoStream) => {
-    // Receiving new users video
+    // new user video
     addVideoStream(video, userVideoStream);
   });
   call.on("close", () => {

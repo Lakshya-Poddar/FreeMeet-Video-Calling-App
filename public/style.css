@@ -1,3 +1,4 @@
+/* root */
 * {
   padding: 0;
   margin: 0;
@@ -27,12 +28,12 @@ body {
   padding-bottom: 0 !important;
 }
 
-/* NAVBAR */
+/* navbar */
 nav {
   background-color: transparent !important;
   padding: 8px 0px !important;
 }
-/* NAVBAR BUTTONS */
+/* nav-buttons */
 .main__controls__button {
   background-color: rgb(29, 29, 29);
   min-width: 70px;
@@ -49,7 +50,7 @@ nav {
   border-radius: 5px;
 }
 
-/* VIDEO LEFT SIDE */
+/* left side video and grid */
 video {
   height: 250px;
   object-fit: contain;
@@ -65,7 +66,7 @@ video {
   min-height: 85vh;
 }
 
-/* RIGHT CHAT WINDOW SIDE */
+/* right side chat box */
 .main__right {
   display: flex;
   flex-direction: column;
