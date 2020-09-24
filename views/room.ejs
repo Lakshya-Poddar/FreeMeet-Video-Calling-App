@@ -64,6 +64,13 @@
         <div
           class="main__controls__block d-flex justify-content-center m-auto text-center"
         >
+          <p class="d-none" id="copy"><%= roomId %></p>
+          <div
+            onclick="copyToClipboard('#copy')"
+            class="main__controls__button m-2"
+          >
+            <i class="fas fa-clipboard"></i>
+          </div>
           <div
             onclick="muteUnmute()"
             class="main__controls__button main__mute_button m-2"
@@ -73,6 +80,7 @@
           <div onclick="exit()" class="main__controls__button m-2">
             <i class="fas fa-phone-slash text-danger"></i>
           </div>
+
           <div
             onclick="playStop()"
             class="main__controls__button main__video_button m-2"

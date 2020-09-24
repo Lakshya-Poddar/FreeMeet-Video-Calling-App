@@ -7,7 +7,7 @@ var thisUserId;
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
-  port: "3000",
+  port: "443",
 });
 
 let myVideoStream;
@@ -112,6 +112,7 @@ const setUnmuteButton = () => {
 
 const playStop = () => {
   let enabled = myVideoStream.getVideoTracks()[0].enabled;
+
   if (enabled) {
     myVideoStream.getVideoTracks()[0].enabled = false;
     setPlayVideo();
@@ -134,3 +135,12 @@ const setPlayVideo = () => {
 const exit = () => {
   socket.emit("userexit");
 };
+
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val("https://facemeet.herokuapp.com/" + $(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+  alert("Link Copied");
+}
