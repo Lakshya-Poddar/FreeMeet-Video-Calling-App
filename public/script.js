@@ -7,7 +7,7 @@ var thisUserId;
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
-  port: "443",
+  port: "3000",
 });
 
 let myVideoStream;
@@ -134,6 +134,9 @@ const setPlayVideo = () => {
 };
 const exit = () => {
   socket.emit("userexit");
+  if (confirm("Leave Call?")) {
+    window.open("end", "_self");
+  }
 };
 
 function copyToClipboard(element) {
