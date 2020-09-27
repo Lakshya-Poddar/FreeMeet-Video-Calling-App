@@ -7,7 +7,7 @@ var thisUserId;
 var peer = new Peer(undefined, {
   path: "/peerjs",
   host: "/",
-  port: "443",
+  port: "3000",
 });
 
 let myVideoStream;
@@ -33,13 +33,13 @@ navigator.mediaDevices
       });
     });
     socket.on("user-connected", (userId) => {
+      console.log(userId);
       connectToNewUser(userId, stream);
     });
   });
 
 socket.on("user-disconnected", (userId) => {
   if (peers[userId]) {
-    console.log("peers[userId]", peers[userId]);
     peers[userId].close();
   }
 });
@@ -76,7 +76,7 @@ $("html").keydown((e) => {
 });
 socket.on("createMessage", (message, userId) => {
   $("ul").append(
-    `<li class="message"><b style="color:#dcdcdc">User ${userId.substring(
+    `<li class="message"><b style="color:#bdbbb9">User ${userId.substring(
       0,
       7
     )}</b><br/><p class="message-content">${message}<p></li>`
