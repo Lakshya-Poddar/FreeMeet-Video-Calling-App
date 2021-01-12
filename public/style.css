@@ -113,3 +113,6 @@ video {
 #chat_message {
   width: 95%;
 }
+#chat_message:focus {
+  outline: none;
+}
